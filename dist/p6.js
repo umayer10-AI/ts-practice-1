@@ -3,9 +3,9 @@
 //   name: string;
 //   salary: number;
 // };
-const employee = {
+const a = {
     id: 1,
     name: "Rahim",
+    salary: 30000
 };
 export {};
-// employee.name = "Karim";

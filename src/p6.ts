@@ -87,16 +87,115 @@
 //     salary: 40000
 // };
 
-interface Employee {
-  id: number;
-  name: string;
-}
+// interface Employee {
+//   id: number;
+//   name: string;
+// }
 
-type ReadonlyEmployee = Readonly<Employee>;
+// type ReadonlyEmployee = Readonly<Employee>;
 
-const employee: ReadonlyEmployee = {
-  id: 1,
-  name: "Rahim",
-};
+// const employee: ReadonlyEmployee = {
+//   id: 1,
+//   name: "Rahim",
+// };
 
 // employee.name = "Karim";
+
+
+//1
+
+// interface Person {
+//     name: string;
+//     age: number;
+// }
+// interface Student extends Person {
+//     rollNumber: number;
+// }
+
+// const student: Student = {
+//     name: "Rahim",
+//     age: 20,
+//     rollNumber: 101
+// };
+
+
+//2
+
+// type Product = {
+//     id: number;
+//     name: string;
+//     price: number;
+// };
+
+// // type Stock = {
+// //     quantity: number;
+// // };
+// type Stock = Product & {
+//     quantity: number;
+// };
+
+// // type Inventory = Product & Stock;
+
+// const inventoryItem: Stock = {
+//     id: 1,
+//     name: "Laptop",
+//     price: 1000,
+//     quantity: 50
+// };
+
+
+//3
+
+
+// interface User {
+//     id: number;
+//     name: string;
+//     email: string;
+//     password: string;
+// }
+
+// type SafeUser = Omit<User, 'password'>;
+// type UpdateUser = Partial<Omit<User, 'id'>>;
+
+// const user: SafeUser = {
+//     id: 1,
+//     name: "Rahim",
+//     email: "rahim@example.com"
+// };
+
+// const updateUser: UpdateUser = {
+//     name: "Karim",
+//     email: "karim@example.com",
+// };  
+
+
+// type User = {
+//   name?: string;
+//   email?: string;
+//   age?: number;
+// };
+
+// type FullUser = Required<User>;
+
+// const user1: FullUser = {
+//   name: "Karim",
+//   email: "karim@gmail.com",
+//   age: 25
+// };
+
+type Employee = {
+  id: number;
+  name?: string;
+  salary?: number;
+  address?: string;
+};
+
+type UpdatedEmployee =
+  Required<Pick<Employee, "name" | "salary">> &
+  Omit<Employee, "name" | "salary">;
+
+const a : UpdatedEmployee = {
+  id: 1,
+  name: "Rahim",
+  salary: 30000
+};
